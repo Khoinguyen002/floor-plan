@@ -20,7 +20,7 @@ export const trustedRequest: Middleware = async function (
   const isSameHost = host.includes(NEXT_DOMAIN);
   const isMethodSafe = ["GET", "POST", "HEAD"].includes(method);
 
-  const trusted = isBrowserAgent && isMethodSafe && isSameHost;
+  const trusted = isBrowserAgent && isMethodSafe;
 
   if (!trusted) {
     return NextResponse.json({ error: "Untrusted request" }, { status: 403 });
